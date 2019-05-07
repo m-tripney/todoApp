@@ -30,8 +30,25 @@ let todoList = {
         this.displayTodos();
     },
     toggleCompleted: function(position) {
-        let todo = this.todos[position];
-        todo.completed = !todo.completed;
+        this.todos[position].completed = !this.todos[position].completed;
+        this.displayTodos();
+    },
+    toggleAll: function() {
+        let completedTodos = 0;
+        for (let i = 0; i < this.todos.length; i++) {
+            if (this.todos[i].completed === true) {
+                completedTodos++;
+            }
+        }
+        if (completedTodos === this.todos.length) {
+            for (let i = 0; i < this.todos.length; i++) {
+                this.todos[i].completed = false;
+            }
+        } else {
+            for (let i = 0; i < this.todos.length; i++) {
+                this.todos[i].completed = true;
+            }
+        }
         this.displayTodos();
     }
 };
@@ -40,9 +57,9 @@ let todoList = {
 TEST CODE
 */
 
-// todoList.displayTodos();
 // todoList.addTodo('Item 1');
 // todoList.addTodo('Item 2');
+// todoList.toggleAll();
+// todoList.toggleAll();
 // todoList.toggleCompleted(0);
-// todoList.toggleCompleted(1);
-// todoList.toggleCompleted(0);
+// todoList.toggleAll();
