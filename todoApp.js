@@ -1,9 +1,17 @@
 let todoList = {
     todos: [],
     displayTodos: function() {
-        console.log('My Todos:');
-        for (let i = 0; i < this.todos.length; i++) {
-            console.log(this.todos[i]);
+        if (Array.isArray(this.todos) && this.todos.length === 0) {
+            console.log('Your Todo list is empty.');
+        } else {
+            console.log('My Todos:');
+            for (let i = 0; i < this.todos.length; i++) {
+                if (this.todos[i].completed === true) {
+                    console.log(this.todos[i].todoText, '(Complete)');
+                } else {
+                    console.log(this.todos[i].todoText, '(Incomplete)');
+                }
+            }
         }
     },
     addTodo: function(todoText) {
@@ -32,6 +40,9 @@ let todoList = {
 TEST CODE
 */
 
+// todoList.displayTodos();
 // todoList.addTodo('Item 1');
-// todoList.changeTodo(0, 'First Item');
+// todoList.addTodo('Item 2');
+// todoList.toggleCompleted(0);
+// todoList.toggleCompleted(1);
 // todoList.toggleCompleted(0);
