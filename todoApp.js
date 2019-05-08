@@ -7,9 +7,9 @@ let todoList = {
             console.log('My Todos:');
             for (let i = 0; i < this.todos.length; i++) {
                 if (this.todos[i].completed === true) {
-                    console.log(this.todos[i].todoText, '(Complete)');
+                    console.log(this.todos[i].todoText + ' (Complete)');
                 } else {
-                    console.log(this.todos[i].todoText, '(Incomplete)');
+                    console.log(this.todos[i].todoText + ' (Incomplete)');
                 }
             }
         }
@@ -53,13 +53,43 @@ let todoList = {
     }
 };
 
-/*
-TEST CODE
-*/
-
-// todoList.addTodo('Item 1');
-// todoList.addTodo('Item 2');
-// todoList.toggleAll();
-// todoList.toggleAll();
-// todoList.toggleCompleted(0);
-// todoList.toggleAll();
+let handlers = {
+    displayTodos: function() {
+        todoList.toggleAll();
+    },
+    toggleAll: function() {
+        todoList.toggleAll();
+    },
+    addTodo: function() {
+        let addTodoTextInput = document.getElementById('addTodoTextInput');
+        todoList.addTodo(addTodoTextInput.value);
+        addTodoTextInput.value = '';
+    },
+    changeTodo: function() {
+        let changeTodoPositionInput = document.getElementById(
+            'changeTodoPositionInput'
+        );
+        let changeTodoTextInput = document.getElementById(
+            'changeTodoTextInput'
+        );
+        todoList.changeTodo(
+            changeTodoPositionInput.value,
+            changeTodoTextInput.value
+        );
+        changeTodoPositionInput.value = '';
+        changeTodoTextInput.value = '';
+    },
+    deleteTodo: function() {
+        let deleteTodoPositionInput = document.getElementById(
+            'deleteTodoPositionInput'
+        );
+        todoList.deleteTodo(deleteTodoPositionInput.value);
+        deleteTodoPositionInput.value = '';
+    },
+    toggleCompleted: function() {
+        let toggleCompletedPositionInput = document.getElementById(
+            'toggleCompletedPositionInput'
+        );
+        todoList.toggleCompleted(toggleCompletedPositionInput.value);
+    }
+};
