@@ -11,6 +11,10 @@ button {
     display: block;
 }
 
+button.deleteButton {
+    display: inline;
+}
+
 button:not(:first-of-type) {
     margin-top: 15px;
 }
